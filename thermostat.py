@@ -8,3 +8,6 @@ class Thermostat():
     
     def up(self):
         self.temperature += 1
+    
+    def down(self):
+        self.temperature -= 1
