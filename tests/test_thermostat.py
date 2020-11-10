@@ -21,3 +21,7 @@ def test_min_temp():
     for i in range(11):
       thermostat.down()
     assert thermostat.get_current_temp() == 10
+
+def test_PSM_default_on():
+    thermostat = Thermostat()
+    assert thermostat.power_saving_mode == True

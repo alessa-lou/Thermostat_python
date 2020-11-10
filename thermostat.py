@@ -3,6 +3,7 @@ class Thermostat():
     def __init__(self, temp = 20):
         self.temperature = temp
         self.MIN_TEMP = 10
+        self.power_saving_mode = True
 
     def get_current_temp(self):
         return self.temperature
