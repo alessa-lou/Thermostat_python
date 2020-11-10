@@ -20,3 +20,12 @@ class Thermostat():
     def is_min_temp(self):
         if self.temperature == self.MIN_TEMP:
           return True
+
+    def is_PSM_on(self):
+        if self.power_saving_mode == True:
+            return True
+        else:
+            return False
+
+    def switch_PSM_off(self):
+        self.power_saving_mode = False

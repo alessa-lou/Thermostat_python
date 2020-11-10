@@ -25,3 +25,8 @@ def test_min_temp():
 def test_PSM_default_on():
     thermostat = Thermostat()
     assert thermostat.power_saving_mode == True
+
+def test_switch_PSM_off():
+    thermostat = Thermostat()
+    thermostat.switch_PSM_off()
+    assert thermostat.is_PSM_on() == False
