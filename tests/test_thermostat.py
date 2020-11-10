@@ -30,3 +30,10 @@ def test_switch_PSM_off():
     thermostat = Thermostat()
     thermostat.switch_PSM_off()
     assert thermostat.is_PSM_on() == False
+
+def test_switch_PSM_on():
+    thermostat = Thermostat()
+    thermostat.switch_PSM_off()
+    assert thermostat.is_PSM_on() == False
+    thermostat.switch_PSM_on()
+    assert thermostat.is_PSM_on() == True

@@ -29,3 +29,6 @@ class Thermostat():
 
     def switch_PSM_off(self):
         self.power_saving_mode = False
+
+    def switch_PSM_on(self):
+        self.power_saving_mode = True
