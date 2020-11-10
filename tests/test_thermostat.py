@@ -15,3 +15,9 @@ def test_decrease_temperature():
     thermostat = Thermostat()
     thermostat.down()
     assert thermostat.get_current_temp() == 19
+
+def test_min_temp():
+    thermostat = Thermostat()
+    for i in range(11):
+      thermostat.down()
+    assert thermostat.get_current_temp() == 10
