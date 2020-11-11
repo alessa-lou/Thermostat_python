@@ -6,6 +6,7 @@ class Thermostat():
         self.MAX_TEMP_PSM_ON = 25
         self.MAX_TEMP_PSM_OFF = 32
         self.power_saving_mode = True
+        self.DEFAULT_TEMP = 20
 
     def get_current_temp(self):
         return self.temperature
@@ -47,4 +48,4 @@ class Thermostat():
         self.power_saving_mode = True
 
     def reset_temp(self):
-        self.temperature = 20
+        self.temperature = self.DEFAULT_TEMP
