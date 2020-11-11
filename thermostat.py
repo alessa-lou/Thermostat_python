@@ -45,3 +45,6 @@ class Thermostat():
 
     def switch_PSM_on(self):
         self.power_saving_mode = True
+
+    def reset_temp(self):
+        self.temperature = 20
