@@ -13,6 +13,8 @@ class Thermostat():
     def up(self):
         if self.is_max_temp_in_PSM() == True:
             return self.MAX_TEMP_PSM_ON
+        elif self.is_max_temp_in_PSM() == False:
+            return self.MAX_TEMP_PSM_ON
         else:
             self.temperature += 1
     

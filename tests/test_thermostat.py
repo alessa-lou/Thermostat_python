@@ -43,3 +43,10 @@ def test_PSM_on_limit():
     for i in range(6):
       thermostat.up()
     assert thermostat.get_current_temp() == 25
+
+def test_PSM_off_limit():
+    thermostat = Thermostat()
+    thermostat.switch_PSM_off()
+    for i in range(13):
+        thermostat.up()
+    assert thermostat.get_current_temp() == 32
