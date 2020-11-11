@@ -1,12 +1,14 @@
 class Thermostat():
 
-    def __init__(self, temp = 20):
-        self.temperature = temp
+    def __init__(self):
+        self.DEFAULT_TEMP = 20
+        self.temperature = self.DEFAULT_TEMP
         self.MIN_TEMP = 10
         self.MAX_TEMP_PSM_ON = 25
         self.MAX_TEMP_PSM_OFF = 32
         self.power_saving_mode = True
-        self.DEFAULT_TEMP = 20
+        self.MEDIUM_ENERGY_USAGE_LIMIT = 18
+        self.HIGH_ENERGY_USAGE_LIMIT = 25
 
     def get_current_temp(self):
         return self.temperature
@@ -49,3 +51,11 @@ class Thermostat():
 
     def reset_temp(self):
         self.temperature = self.DEFAULT_TEMP
+
+    def energy_usage(self):
+        if self.temperature < self.MEDIUM_ENERGY_USAGE_LIMIT:
+            return "Low usage"
+        elif self.temperature <= self.HIGH_ENERGY_USAGE_LIMIT:
+            return "Medium usage"
+        else:
+            return "High usage"

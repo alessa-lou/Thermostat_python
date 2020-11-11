@@ -57,3 +57,26 @@ def test_reset_temp():
         thermostat.up()
     thermostat.reset_temp()
     assert thermostat.get_current_temp() == 20
+
+def test_low_energy_usage():
+    thermostat = Thermostat()
+    for i in range(3):
+        thermostat.down()
+    assert thermostat.energy_usage() == "Low usage"
+
+def test_low_energy_usage():
+    thermostat = Thermostat()
+    for i in range(3):
+        thermostat.down()
+    assert thermostat.energy_usage() == "Low usage"
+
+def test_medium_energy_usage():
+    thermostat = Thermostat()
+    assert thermostat.energy_usage() == "Medium usage"
+
+def test_high_energy_usage():
+    thermostat = Thermostat()
+    thermostat.switch_PSM_off()
+    for i in range(6):
+        thermostat.up()
+    assert thermostat.energy_usage() == "High usage"
