@@ -1,47 +1,61 @@
 // ??? something useful needs to go in here...
-
+'use strict';
 
 $(document).ready(function() {
-    var thermostat = new Thermostat();
     updateTemperature();
   
     $('#temperature-up').click(function() {
-    thermostat.up();
-    updateTemperature();
+        $.post('/temperature', { method: "up"}, function(res){
+            var data = JSON.parse(res);
+            if (data.status == 200) {
+                updateTemperature();
+            }
+        });
     });
   
-    $('#temperature-down').click(function() {
-      thermostat.down();
-      updateTemperature();
-      });
-  
-    $('#temperature-reset').click(function() {
-      thermostat.resetTemperature();
-      updateTemperature();
+    $('#temperature-up').click(function() {
+        $.post('/temperature', { method: "down"}, function(res){
+            var data = JSON.parse(res);
+            if (data.status == 200) {
+                updateTemperature();
+            }
+        });
     });
   
-    $('#powersaving-off').click(function() {
-      thermostat.switchPowerSavingModeOff();
-      $('#power-saving-status').text('off');
+    $('#temperature-up').click(function() {
+        $.post('/temperature', { method: "reset"}, function(res){
+            var data = JSON.parse(res);
+            if (data.status == 200) {
+                updateTemperature();
+            }
+        });
     });
   
-    $('#powersaving-on').click(function () {
-      thermostat.switchPowerSavingModeOn();
-      $('#power-saving-status').text('on');
-      updateTemperature();
-    });
+    // $('#powersaving-off').click(function() {
+    //   thermostat.switchPowerSavingModeOff();
+    //   $('#power-saving-status').text('off');
+    // });
+  
+    // $('#powersaving-on').click(function () {
+    //   thermostat.switchPowerSavingModeOn();
+    //   $('#power-saving-status').text('on');
+    //   updateTemperature();
+    // });
   
   
   
   
   
     function updateTemperature() {
-      $('#temperature').text(`Current Temperature: ${thermostat.getCurrentTemperature()} degrees`);
-      $('#temperature').attr('class', thermostat.energyUsage());
-    }
+        $.get('/temperature', function(res) {
+            var data = JSON.parse(res)
+            if (data.status == 200) {
+                var power_saving_mode = data.is_PSM_on ? "True" : "False";
+                $('#temperature').text(`Current Temperature: ${thermostat.getCurrentTemperature()} degrees`);
+                $('#temperature').attr('class', thermostat.energyUsage());
+                $('#power-saving-status').text(power_saving_mode);
+            }
+        });
+    }  
   
-  
-  
-  
-  
-  })
+  });
