@@ -1,3 +1,5 @@
+// ??? something useful needs to go in here...
+
 
 $(document).ready(function() {
     var thermostat = new Thermostat();
