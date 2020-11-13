@@ -1,24 +1,32 @@
-{% extends 'base.html' %}
-
 {% block head %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Thermostat Exemplar</title>
+    <link rel="stylesheet" href="static/css/style.css" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+  </head>
 
 
 {% endblock %}
 
 {% block body %}
-
-    <h1>Thermostat</h1>
-    <section>
-        <h1 id="temperature"></h1>
-        <p>
-          <button id="temperature-up">+</button>
-          <button id="temperature-down">-</button>
-          <button id="temperature-reset">reset</button>
-          power saving mode is <span id="power-saving-status">on</span>
-          <button id="powersaving-on">PSM on</button>
-          <button id="powersaving-off">PSM off</button>
-        </p>
-      </section>
-      <script type="text/javascript" src="src/interface.js"></script>
+<body>
+  <h1>Hello?</h1>
+  <h1 id="temperature"></h1>
+  <div>
+    <button id="temperature-up">+</button>
+    <button id="temperature-down">-</button>
+    <button id="temperature-reset">reset</button>
+  </div>
+  <div>
+    power saving mode is <span id="power-saving-status">on</span>
+    <button id="power-saving-on">PSM on</button>
+    <button id="power-saving-off">PSM off</button>
+  </div>
+  <script type="text/javascript" src="static/interface.js"></script>
+</body>
+</html>
 {% endblock %}
