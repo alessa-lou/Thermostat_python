@@ -14,40 +14,58 @@ def index():
 @app.route('/temperature', methods=["GET"])
 def temp():
     thermostat = Thermostat()
-    print(thermostat.temperature)
-    # print(request.json)
-    print("Bonjour")
+    print("Get sent")
     list = {
         "temperature": thermostat.temperature,
-        "power_saving_mode": thermostat.is_PSM_on(),
+        "power_save_mode_on": thermostat.is_PSM_on(),
         "energy_usage": thermostat.energy_usage(),
         "status": 200
     }    
-    return jsonify(results = list)
+    json_data = json.dumps(list)
+    return json_data
 
 @app.route('/temperature', methods=["POST"])
 def temp_post():
     thermostat = Thermostat()
-    print(request.get_json())
-    print(request.args.get("#temperature-up"))
-    if request.args.get("temperature-up"):
-        return thermostat.up()
-    elif request.args.get("temperature-down"):
-        return thermostat.down()
-    elif request.args.get("temperature-reset"):
-        return thermostat.reset_temp()
+    print(request.form)
+    # print(request.form.to_dict(flat=False))
+    # print(request.form.getlist('method[]'))
+    obj = request.form.to_dict()
+    new_thing = json.dumps(obj)
+    print(new_thing)
+    
+    if "up" in new_thing:
+        print("hello youre in the up")
+        thermostat.up()
+        print(thermostat.temperature)
+        return jsonify(status=200)
+    elif "down" in new_thing:
+        print("hello youre in the down")
+        print(thermostat.temperature)
+        thermostat.down()
+        return jsonify(status=200)
+    elif "reset" in new_thing:
+        print("hello youre in the reset")
+        print(thermostat.temperature)
+        thermostat.reset_temp()
+        return jsonify(status=200)
     else:
-        return "?"
-    # jsonify(status=200)
+        return print("hello this went a bit wrong")
 
 @app.route('/power-saving-mode', methods=["POST"])
 def power_saving():
     thermostat = Thermostat()
-    print(request.args.get("power-saving-on"))
-    if request.args.get("power-saving-on"):
-        return thermostat.switch_PSM_on
+    obj = request.form.to_dict()
+    print(request.form)
+    new_thing = json.dumps(obj)
+    if "on" in new_thing:
+        print("hello you are in psm on")
+        thermostat.switch_PSM_on
+        return jsonify(status=200)
     else:
-        return thermostat.switch_PSM_off
+        print("hello you are in psm off")
+        thermostat.switch_PSM_off
+        return jsonify(status=200)
 
 if __name__ == '__main__':
     app.run()

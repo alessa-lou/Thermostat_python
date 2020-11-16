@@ -5,7 +5,9 @@ $(document).ready(function() {
   
     $('#temperature-up').on('click', function() {
         $.post('/temperature', { method: "up"}, function(res){
+            console.log(res)
             // var data = JSON.parse(res);
+            // console.log(data)
             if (res.status == 200) {
                 updateTemperature();
             }
@@ -21,7 +23,7 @@ $(document).ready(function() {
         });
     });
   
-    $('#temperature-reser').on('click', function() {
+    $('#temperature-reset').on('click', function() {
         $.post('/temperature', { method: "reset"}, function(res){
             // var data = JSON.parse(res);
             if (res.status == 200) {
@@ -50,11 +52,15 @@ $(document).ready(function() {
   
     function updateTemperature() {
         $.get('/temperature', function(res) {
-            if (res.status == 200) {
-                var power_saving_mode = res.is_PSM_on ? "on" : "off";
-                console.log("helloooooo?!?!?!?!")
-                $('#temperature').text(res.temperature);
-                $('#temperature').attr('class', res.energy_usage() + '-usage');
+          console.log(res)
+          var data = JSON.parse(res)
+          console.log(data.temperature)
+            if (data.status == 200) {
+                var power_saving_mode = data.power_save_mode_on ? "on" : "off";
+                console.log(data.status)
+                console.log(power_saving_mode)
+                $('#temperature').text(data.temperature);
+                $('#temperature').attr('class', data.energy_usage + '-usage');
                 $('#power-saving-status').text(power_saving_mode);
             }
         });
