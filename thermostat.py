@@ -22,14 +22,6 @@ class Thermostat():
         self.power_saving_mode = True
         self.MEDIUM_ENERGY_USAGE_LIMIT = 18
         self.HIGH_ENERGY_USAGE_LIMIT = 25
-    
-    # def instance(cls):
-    #     if cls._instance is None:
-    #         print("Creating the object")
-    #         cls._instance = super(Thermostat, cls).__new__(cls)
-    #         return cls._instance
-    #     else:
-    #         return cls.__init__
 
     def get_current_temp(self):
         return self.temperature

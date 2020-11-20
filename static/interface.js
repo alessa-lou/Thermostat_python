@@ -45,6 +45,7 @@ $(document).ready(function() {
         $.post('/power-saving-mode', function(res) {
           // var data = JSON.parse(res)
           if (res.status === 200) {
+            console.log("Hello are we in the right bit?")
             updateTemperature();
           }
         });

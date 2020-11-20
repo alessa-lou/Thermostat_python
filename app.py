@@ -14,7 +14,6 @@ def index():
 
 @app.route('/temperature', methods=["GET"])
 def temp():
-    # thermostat = Thermostat()
     print(thermostat)
     print("Get sent")
     list = {
@@ -28,10 +27,7 @@ def temp():
 
 @app.route('/temperature', methods=["POST"])
 def temp_post():
-    # thermostat = Thermostat()
     print(request.form)
-    # print(request.form.to_dict(flat=False))
-    # print(request.form.getlist('method[]'))
     obj = request.form.to_dict()
     new_thing = json.dumps(obj)
     print(new_thing)
@@ -56,17 +52,15 @@ def temp_post():
 
 @app.route('/power-saving-mode', methods=["POST"])
 def power_saving():
-    # thermostat = Thermostat()
     obj = request.form.to_dict()
-    print(request.form)
     new_thing = json.dumps(obj)
     if "on" in new_thing:
-        print("hello you are in psm on")
-        thermostat.switch_PSM_on
+        print("you are in psm on")
+        thermostat.switch_PSM_on()
         return jsonify(status=200)
     else:
-        print("hello you are in psm off")
-        thermostat.switch_PSM_off
+        print("you are in psm off")
+        thermostat.switch_PSM_off()
         return jsonify(status=200)
 
 if __name__ == '__main__':
