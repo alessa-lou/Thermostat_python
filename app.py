@@ -5,6 +5,7 @@ import json
 from flask import jsonify
 
 app = Flask(__name__)
+thermostat = Thermostat()
 
 @app.route('/')
 def index():
@@ -13,7 +14,8 @@ def index():
 
 @app.route('/temperature', methods=["GET"])
 def temp():
-    thermostat = Thermostat()
+    # thermostat = Thermostat()
+    print(thermostat)
     print("Get sent")
     list = {
         "temperature": thermostat.temperature,
@@ -26,7 +28,7 @@ def temp():
 
 @app.route('/temperature', methods=["POST"])
 def temp_post():
-    thermostat = Thermostat()
+    # thermostat = Thermostat()
     print(request.form)
     # print(request.form.to_dict(flat=False))
     # print(request.form.getlist('method[]'))
@@ -41,20 +43,20 @@ def temp_post():
         return jsonify(status=200)
     elif "down" in new_thing:
         print("hello youre in the down")
-        print(thermostat.temperature)
         thermostat.down()
+        print(thermostat.temperature)
         return jsonify(status=200)
     elif "reset" in new_thing:
         print("hello youre in the reset")
-        print(thermostat.temperature)
         thermostat.reset_temp()
+        print(thermostat.temperature)
         return jsonify(status=200)
     else:
         return print("hello this went a bit wrong")
 
 @app.route('/power-saving-mode', methods=["POST"])
 def power_saving():
-    thermostat = Thermostat()
+    # thermostat = Thermostat()
     obj = request.form.to_dict()
     print(request.form)
     new_thing = json.dumps(obj)
