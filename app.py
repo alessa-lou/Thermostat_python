@@ -9,12 +9,10 @@ thermostat = Thermostat()
 
 @app.route('/')
 def index():
-    # print(request.json)
     return render_template('index.html')
 
 @app.route('/temperature', methods=["GET"])
 def temp():
-    print(thermostat)
     print("Get sent")
     list = {
         "temperature": thermostat.temperature,
@@ -27,23 +25,21 @@ def temp():
 
 @app.route('/temperature', methods=["POST"])
 def temp_post():
-    print(request.form)
     obj = request.form.to_dict()
     new_thing = json.dumps(obj)
-    print(new_thing)
     
     if "up" in new_thing:
-        print("hello youre in the up")
+        print("Youre in up")
         thermostat.up()
         print(thermostat.temperature)
         return jsonify(status=200)
     elif "down" in new_thing:
-        print("hello youre in the down")
+        print("Youre in down")
         thermostat.down()
         print(thermostat.temperature)
         return jsonify(status=200)
     elif "reset" in new_thing:
-        print("hello youre in the reset")
+        print("Youre in reset")
         thermostat.reset_temp()
         print(thermostat.temperature)
         return jsonify(status=200)
