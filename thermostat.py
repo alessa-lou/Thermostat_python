@@ -67,8 +67,8 @@ class Thermostat():
 
     def energy_usage(self):
         if self.temperature < self.MEDIUM_ENERGY_USAGE_LIMIT:
-            return "Low usage"
+            return "low-usage"
         elif self.temperature <= self.HIGH_ENERGY_USAGE_LIMIT:
-            return "Medium usage"
+            return "medium-usage"
         else:
-            return "High usage"
+            return "high-usage"

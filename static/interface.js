@@ -50,7 +50,7 @@ $(document).ready(function() {
             if (data.status == 200) {
                 var power_saving_mode = data.power_save_mode_on ? "on" : "off";
                 $('#temperature').text(data.temperature);
-                $('#temperature').attr('class', data.energy_usage + '-usage');
+                $('#temperature').attr('class', data.energy_usage);
                 $('#power-saving-status').text(power_saving_mode);
             }
         });

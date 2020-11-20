@@ -1,7 +1,17 @@
 h1 {
-    border: 2px #eee solid;
-    color: brown;
+    color: black;
     text-align: center;
-    padding: 10px;
 }
+.low-usage {
+    color: green;
+  }
+  
+  
+  .medium-usage {
+    color: orange;
+  }
+  
+  .high-usage {
+    color: red;
+  }
 
