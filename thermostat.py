@@ -1,19 +1,6 @@
-class Thermostat():        
-    instance = None
-    _init_called = False
-
-    def __new__(cls):
-        if cls.instance is None:
-            cls.instance = super(Thermostat, cls).__new__(cls)
-            cls.instance.__initialized = False
-        return cls.instance
-
+class Thermostat(): 
 
     def __init__(self):
-        if Thermostat._init_called:
-            print(True)
-        Thermostat._init_called = True
-        print("INIT")
         self.DEFAULT_TEMP = 20
         self.temperature = self.DEFAULT_TEMP
         self.MIN_TEMP = 10
