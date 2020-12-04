@@ -62,21 +62,15 @@ def test_low_energy_usage():
     thermostat = Thermostat()
     for i in range(3):
         thermostat.down()
-    assert thermostat.energy_usage() == "Low usage"
-
-def test_low_energy_usage():
-    thermostat = Thermostat()
-    for i in range(3):
-        thermostat.down()
-    assert thermostat.energy_usage() == "Low usage"
+    assert thermostat.energy_usage() == "low-usage"
 
 def test_medium_energy_usage():
     thermostat = Thermostat()
-    assert thermostat.energy_usage() == "Medium usage"
+    assert thermostat.energy_usage() == "medium-usage"
 
 def test_high_energy_usage():
     thermostat = Thermostat()
     thermostat.switch_PSM_off()
     for i in range(6):
         thermostat.up()
-    assert thermostat.energy_usage() == "High usage"
+    assert thermostat.energy_usage() == "high-usage"
