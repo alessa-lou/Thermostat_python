@@ -23,7 +23,7 @@ def test_min_temp(thermostat):
     assert thermostat.get_current_temp() == 10
 
 def test_PSM_default_on(thermostat):
-    assert thermostat.power_saving_mode == True
+    assert thermostat.is_PSM_on() == True
 
 def test_switch_PSM_off(thermostat):
     thermostat.switch_PSM_off()

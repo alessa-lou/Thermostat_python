@@ -38,10 +38,7 @@ class Thermostat():
             return False
 
     def is_PSM_on(self):
-        if self.power_saving_mode == True:
-            return True
-        else:
-            return False
+        return self.power_saving_mode
 
     def switch_PSM_off(self):
         self.power_saving_mode = False
